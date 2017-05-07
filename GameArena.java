@@ -54,6 +54,8 @@ public class GameArena
     private Scene scene;
     private Group root;
     private JFXPanel jfxPanel;  
+    
+    private double mv; // Aidan Hackett
 
 	/**
      * Constructor. Creates an instance of the GameArena class, and displays a window on the
@@ -408,7 +410,92 @@ public class GameArena
 	    }
 	}
 	
-	
+   public void addTraffic(Traffic traffic)
+   {
+        Rectangle laneA[] = traffic.getTrafficA();
+        for (int k=0; k<laneA.length; k++)
+        {
+           this.addList.add(laneA[k]);
+        }
+        
+        Rectangle laneB[] = traffic.getTrafficB();
+        for (int k=0; k<laneB.length; k++)
+        {
+           this.addList.add(laneB[k]);
+        }
+                
+        Rectangle laneC[] = traffic.getTrafficC();
+        for (int k=0; k<laneC.length; k++)
+        {
+           this.addList.add(laneC[k]);
+        }
+        Rectangle laneD[] = traffic.getTrafficD();
+        for (int k=0; k<laneD.length; k++)
+        {
+           this.addList.add(laneD[k]);
+        }
+           
+   }
+   
+   public void moveTraffic(Traffic traffic)
+   {
+       Rectangle laneA[] = traffic.getTrafficA();
+       Rectangle laneB[] = traffic.getTrafficB();
+       Rectangle laneC[] = traffic.getTrafficC();
+       Rectangle laneD[] = traffic.getTrafficD();
+       
+               for (int k=0; k<laneA.length; k++)
+               { 
+                    // Lane 1 
+                    mv = laneA[k].getXPosition(); 
+                    laneA[k].setXPosition(mv+30); // Moves the cars along
+                    pause();
+                      
+                    if (mv >= 500)
+                    {
+                       laneA[k].setXPosition(0); // When cars go offscreen, restart from left
+                    }  
+                   
+                    // Lane 2
+                    mv = laneB[k].getXPosition();
+                    laneB[k].setXPosition(mv+5); // Smaller variable added to mv causes lower speed
+                    pause();
+                    if (mv >= 500)
+                    {
+                         laneB[k].setXPosition(0);
+                    } 
+                    
+                    // Lane 3
+                    mv = laneC[k].getXPosition();
+                    laneC[k].setXPosition(mv+25);
+                    pause();
+                    if (mv >= 500)
+                    {
+                         laneC[k].setXPosition(0);
+                    } 
+                    
+                    // Lane 4
+                    mv = laneD[k].getXPosition();
+                    laneD[k].setXPosition(mv+10);
+                    pause();
+                    if (mv >= 500)
+                    {
+                          laneD[k].setXPosition(0);
+                    }               
+             }
+   
+   
+   
+   
+   
+   
+   
+   }
+   
+   
+   
+   
+
 	
 	
 	

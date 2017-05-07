@@ -15,7 +15,6 @@ public class Frog
       /* Variables for keyboard input to activate motion */
       private boolean upMotion, downMotion, leftMotion, rightMotion;
       
-      private GameArena game; // To run the game 
       private Ball[] frogBody = new Ball[6]; // Array for frog body, head, limbs
       
       // Constructor - creates a blue frog character on-screen 
