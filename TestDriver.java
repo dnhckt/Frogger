@@ -1,26 +1,33 @@
+/* 
+    TestDriver
+    =========
+    Creates a working instance of the frogger game && constructs the rows of traffic that the user must avoid (should be moved to separate class).
+    
+    Use the direction keys to move the frog. If you hit a car, you lose.
+    
+    Author: Aidan Hackett
+
+*/
 
 public class TestDriver
 {
-
-             
-    
-    
     
     public static void main(String[] args)
     {
-     double yPositionA, yPositionB, yPositionC, yPositionD;
-     double xPosition;
-     int value;
-     double mv;
-    
-     Rectangle[] laneA;
-     Rectangle[] laneB;
-     Rectangle[] laneC;
-     Rectangle[] laneD;
-     Ball[] wLane;
+         double yPositionA, yPositionB, yPositionC, yPositionD; // Four different rows of traffic along the y-axis
+         //v double xPosition; 
+         double mv; // Used for traffic movement
+        
+         // Rectangle arrays to represent cars
+         Rectangle[] laneA; 
+         Rectangle[] laneB;
+         Rectangle[] laneC;
+         Rectangle[] laneD;
 
-        int arrayLoop;
-       // Constructs a lane of cars
+         int arrayLoop;
+        
+        /* Begin constructing four lanes (A-D) of cars */
+       
         laneA = new Rectangle[5];
         yPositionA = 375;
         
@@ -60,15 +67,15 @@ public class TestDriver
         laneD[3] = new Rectangle(340, yPositionD, 50, 20, "ORANGE");       
         laneD[4] = new Rectangle(440, yPositionD, 50, 20, "ORANGE"); 
                
-    
+        /* End construction of car lanes */ 
 
-         GameArena game = new GameArena(500, 500);
-         Frog frog = new Frog();
+         GameArena game = new GameArena(500, 500); // Create game window
+         Frog frog = new Frog(); // Add user character 
          //Traffic vehicle = new Traffic();
          Road road = new Road();        
-
-         //vehicle.addTo(game);
-         //vehicle.move(game);
+ 
+           //vehicle.addTo(game);
+           //vehicle.move(game);
             game.addRoad(road);
             for (arrayLoop = 0; arrayLoop < 5; arrayLoop++)
             {
@@ -80,29 +87,35 @@ public class TestDriver
             game.addFrog(frog);
 
 
-
+         /* 
+         While loop that starts the game.
+         This loop controls the movement of the cars and the user's control of the frog.    
+         */      
          
          while (true)
          {
+            /* Car movement is controlled by this loop 
             for (arrayLoop = 0; arrayLoop < 5; arrayLoop++)
                 {
-                    mv = laneA[arrayLoop].getXPosition();
-                    laneA[arrayLoop].setXPosition(mv+30);
-                    game.pause();
-                    if (mv >= 500)
+                    // First row of cars
+                    mv = laneA[arrayLoop].getXPosition(); // Get X Position of lane of cars
+                    laneA[arrayLoop].setXPosition(mv+30); // Move the cars along the screen.
+                    game.pause(); // Refresh
+                    if (mv >= 500) 
                     {
-                         laneA[arrayLoop].setXPosition(0);
+                         laneA[arrayLoop].setXPosition(0); // When the cars reach the end of the screen, reset X to 0
                     }   
-             
+                    
+                    // Second row of cars
                     mv = laneB[arrayLoop].getXPosition();
-                    laneB[arrayLoop].setXPosition(mv+5);
+                    laneB[arrayLoop].setXPosition(mv+5); // Smaller variable added to mv causes lower speed
                     game.pause();
                     if (mv >= 500)
                     {
                          laneB[arrayLoop].setXPosition(0);
                     } 
                     
-                    
+                    // Third row of cars
                     mv = laneC[arrayLoop].getXPosition();
                     laneC[arrayLoop].setXPosition(mv+25);
                     game.pause();
@@ -111,6 +124,7 @@ public class TestDriver
                          laneC[arrayLoop].setXPosition(0);
                     } 
                     
+                    // Fourth row of cars
                     mv = laneD[arrayLoop].getXPosition();
                     laneD[arrayLoop].setXPosition(mv+10);
                     game.pause();
@@ -118,17 +132,38 @@ public class TestDriver
                     {
                           laneD[arrayLoop].setXPosition(0);
                     }     
-                }
+             }*/
          
-            boolean motion = game.upPressed();    
-            if (motion)
+            /* Accesses the frog walk methods to allow user movement */
+            boolean upMotion = game.upPressed(); // If user presses the up key
+            if (upMotion) 
             {
-                  frog.walk();
+                  frog.walkUp();
                   game.pause();
-                  System.out.println("test");
             }
          
-            game.pause(); 
+            boolean downMotion = game.downPressed();    
+            if (downMotion)
+            {
+                  frog.walkDown();
+                  game.pause();
+            }
+            
+            boolean leftMotion = game.leftPressed();
+            if (leftMotion)
+            {
+                  frog.walkLeft();
+                  game.pause();
+            }
+            
+            boolean rightMotion = game.rightPressed();
+            if (rightMotion)
+            {
+                  frog.walkRight();
+                  game.pause();
+            }
+         
+           game.pause(); 
          }
 
 

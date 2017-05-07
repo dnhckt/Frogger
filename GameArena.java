@@ -386,7 +386,10 @@ public class GameArena
 		return right;
 	}
 	
-	// Your methods
+ /* Joe Finney's Code ends here */
+	
+ /* Methods added by Aidan Hackett */
+ 
 	public void addFrog(Frog frog)
 	{
 	    Ball frogBody[] = frog.getFrog();
