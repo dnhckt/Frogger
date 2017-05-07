@@ -94,7 +94,7 @@ public class TestDriver
          
          while (true)
          {
-            /* Car movement is controlled by this loop 
+            // Car movement is controlled by this loop 
             for (arrayLoop = 0; arrayLoop < 5; arrayLoop++)
                 {
                     // First row of cars
@@ -132,7 +132,7 @@ public class TestDriver
                     {
                           laneD[arrayLoop].setXPosition(0);
                     }     
-             }*/
+             }
          
             /* Accesses the frog walk methods to allow user movement */
             boolean upMotion = game.upPressed(); // If user presses the up key
