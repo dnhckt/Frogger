@@ -2,7 +2,7 @@
                                                     FROGGER
 ------------------------------------------------------------------------------------------------------------------------------
 
-A basic recreation of <a href="http://froggerclassic.appspot.com/"> Frogger </a>. 
+<a href="http://froggerclassic.appspot.com/"> Frogger </a>
 
 
 Forked from # GameArena:<br>
